@@ -112,4 +112,17 @@ class UsersController extends AppController {
         }
     }
 
+    public function initialize() {
+        parent::initialize();
+        $this->Auth->allow(['logout','add']); // logout and add are excluded from requiring authentication
+    }
+
+    public function logout() {
+        $this->Flash->success('You are now logged out.');
+//        var_dump($this->Auth->logout());
+//        return $this->redirect('/users/login'); You can use this too but to use fixed path is not right thing I think
+        return $this->redirect($this->Auth->logout()); // I think this is good approach
+        
+    }
+
 }

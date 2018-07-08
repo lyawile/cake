@@ -46,6 +46,7 @@ class AppController extends Controller {
         ]);
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
+            'authorize'=>'Controller',
             'authenticate' => [
                 'Form' => [
                     'fields' => [
@@ -71,6 +72,10 @@ class AppController extends Controller {
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
          */
         //$this->loadComponent('Security');
+    }
+
+    public function isAuthorized($user) {
+        return false; // deny all users 
     }
 
 }
